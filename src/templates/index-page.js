@@ -1,148 +1,94 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+// @format
+import React from 'react';
+import PropTypes from 'prop-types';
+import {graphql} from 'gatsby';
+import instagram from '../img/social/instagram.svg';
+import linkedin from '../img/social/linkedin.svg';
+import twitter from '../img/social/twitter.svg';
+import github from '../img/social/github.svg';
 
-import Layout from '../components/Layout'
-import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
+import Layout from '../components/Layout';
 
-export const IndexPageTemplate = ({
-  image,
-  title,
-  heading,
-  subheading,
-  mainpitch,
-  description,
-  intro,
-}) => (
-  <div>
-    <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
-        }}
-      >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {subheading}
-        </h3>
-      </div>
-    </div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-)
+export const IndexPageTemplate = ({title, heading, social}) => (
+  <main className="index-center">
+    <h1 className="index-title">{title}</h1>
+    <h2 className="index-heading">{heading}</h2>
+    <aside>
+      <ul className="social-list">
+        <li className="social-item">
+          <a
+            title="@imdanielch"
+            href={social.twitter}
+            rel="noopener noreferrer"
+            target="_blank">
+            <img src={twitter} alt="Twitter" className="social-icon" />
+          </a>
+        </li>
+        <li className="social-item">
+          <a
+            title="danielim"
+            href={social.github}
+            rel="noopener noreferrer"
+            target="_blank">
+            <img src={github} alt="GitHub" className="social-icon" />
+          </a>
+        </li>
+        <li className="social-item">
+          <a
+            title="imdanielch"
+            href={social.linkedin}
+            rel="noopener noreferrer"
+            target="_blank">
+            <img src={linkedin} alt="Linkedin" className="social-icon" />
+          </a>
+        </li>
+        <li className="social-item">
+          <a
+            title="@imdanielchen"
+            href={social.instagram}
+            rel="noopener noreferrer"
+            target="_blank">
+            <img src={instagram} alt="Instagram" className="social-icon" />
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <svg xmlns="<http://www.w3.org/2000/svg>" version="1.1">
+      <defs>
+        <filter id="social-filter">
+          <feColorMatrix
+            colorInterpolationFilters="sRGB"
+            type="matrix"
+            values="0.8 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 0 0
+                    0 0 0 1 0 "
+          />
+        </filter>
+      </defs>
+    </svg>
+  </main>
+);
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
-}
+  social: PropTypes.object,
+};
 
-const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+const IndexPage = ({data}) => {
+  const {frontmatter} = data.markdownRemark;
 
   return (
     <Layout>
       <IndexPageTemplate
-        image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
+        social={frontmatter.social}
       />
     </Layout>
-  )
-}
+  );
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -150,44 +96,23 @@ IndexPage.propTypes = {
       frontmatter: PropTypes.object,
     }),
   }),
-}
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+    markdownRemark(frontmatter: {templateKey: {eq: "index-page"}}) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
         heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
-        description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-          }
-          heading
-          description
+        social {
+          twitter
+          linkedin
+          github
+          instagram
         }
       }
     }
   }
-`
+`;

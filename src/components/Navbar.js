@@ -1,19 +1,20 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+// @format
+import React from 'react';
+import {Link, graphql, StaticQuery} from 'gatsby';
+import PreviewCompatibleImage from './PreviewCompatibleImage';
 
-const Navbar = class extends React.Component {
+class Navbar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
+      // state to show if burger menu is open
       active: false,
       navBarActiveClass: '',
-    }
+    };
   }
 
   toggleHamburger = () => {
-    // toggle the active boolean in the state
+    // toggle the burger active boolean in the state
     this.setState(
       {
         active: !this.state.active,
@@ -27,72 +28,109 @@ const Navbar = class extends React.Component {
             })
           : this.setState({
               navBarActiveClass: '',
-            })
-      }
-    )
-  }
+            });
+      },
+    );
+  };
 
   render() {
+    const {data} = this.props;
     return (
-      <nav
-        className="navbar is-transparent"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div>
-          </div>
+      <nav className="navbar" role="navigation" aria-label="main-navigation">
+        <Link className="logo" to="/">
+          <PreviewCompatibleImage
+            className="logo"
+            imageInfo={{
+              image: data.logo,
+              alt: 'ren logo',
+            }}
+          />
+        </Link>
+        {/* Hamburger menu */}
+        <div
+          className={`navbar-burger-logo ${this.state.navBarActiveClass}`}
+          data-target="navMenu"
+          onClick={() => this.toggleHamburger()}>
+          <PreviewCompatibleImage
+            className="navbar-burger-logo-image"
+            imageInfo={{
+              image: data.burger,
+              alt: 'ren logo',
+            }}
+          />
+          <span className="pad-left">Menu</span>
         </div>
+        <ul
+          id="navMenu"
+          className={`navbar-menu ${this.state.navBarActiveClass}`}>
+          <li className="navbar-item item-burger-close">
+            <div
+              className={`navbar-burger-close ${this.state.navBarActiveClass}`}
+              data-target="navMenu"
+              onClick={() => this.toggleHamburger()}>
+              Close
+            </div>
+          </li>
+          <li className="navbar-item">
+            <Link className="navbar-link navbar-link-home" to="/">
+              Home
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link className="navbar-link" to="/about">
+              About
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link className="navbar-link" to="/portfolio">
+              Portfolio
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link className="navbar-link" to="/blog">
+              Blog
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link className="navbar-link" to="/contact">
+              Contact
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link className="navbar-link" to="/resume">
+              Resume
+            </Link>
+          </li>
+        </ul>
       </nav>
-    )
+    );
   }
 }
 
-export default Navbar
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query NavbarQuery {
+        logo: file(relativePath: {eq: "logo.png"}) {
+          childImageSharp {
+            fluid(maxWidth: 100, quality: 100) {
+              ...GatsbyImageSharpFluid
+              presentationWidth
+            }
+          }
+        }
+        burger: file(relativePath: {eq: "logo.png"}) {
+          childImageSharp {
+            fluid(maxWidth: 40, quality: 100) {
+              ...GatsbyImageSharpFluid
+              presentationWidth
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      return <Navbar data={data} />;
+    }}
+  />
+);

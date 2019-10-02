@@ -1,0 +1,21 @@
+.contact-input-group input[type],
+.textarea
+  width: 100%
+  display: block
+  appearance: none
+  box-shadow: none
+  border-radius: none
+  padding: 12px 20px
+  margin-bottom: 1em
+  border: solid 1px #e3314c
+  transition: box-shadow 100ms, border 100ms
+
+.textarea
+  min-height: 120px
+
+.contact-input-group input[type]:focus,
+.contact-input-group input[type].focus,
+.textarea:focus
+  outline: none
+  border: solid 1px $red
+  box-shadow: 0 0 0px 2px $red

@@ -1,19 +1,13 @@
 ---
 templateKey: 'about-page'
 path: /about
-title: About our values
+title: Daniel Chen
 ---
-### Shade-grown coffee
-Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. The forest-like structure of shade coffee farms provides habitat for a great number of migratory and resident species.
 
-### Single origin
-Single-origin coffee is coffee grown within a single known geographic origin. Sometimes, this is a single farm or a specific collection of beans from a single country. The name of the coffee is then usually the place it was grown to whatever degree available.
+- As a kid from the 90s, I grew up along side the internet
+- Graduated from Texas A&M University with BS in biology
+- Worked as a react developer for 2 years
 
-### Sustainable farming
-Sustainable agriculture is farming in sustainable ways based on an understanding of ecosystem services, the study of relationships between organisms and their environment. What grows where and how it is grown are a matter of choice and careful consideration for nature and communities.
+Growing up in a DIY household, I have explored many different domains such as home improvement, car maintenance, photography, videography, editing, dabbled with musical instrumentsi, and game development. I love learning from seeminly different fields because I believe it broadens my understanding of processes and helps me think outside the box. For example, there's a big overlap of the [scientific method](https://en.wikipedia.org/wiki/Scientific_method) in science and the [Lean UX](https://webdevstudios.com/2015/05/11/lean-ux-design/#lean-ux-does-not-equal-agile-ux) cycle in the UX field.
 
-### Direct sourcing
-Direct trade is a form of sourcing practiced by some coffee roasters. Advocates of direct trade practices promote direct communication and price negotiation between buyer and farmer, along with systems that encourage and incentivize quality.
-
-### Reinvest profits
-We want to truly empower the communities that bring amazing coffee to you. That’s why we reinvest 20% of our profits into farms, local businesses and schools everywhere our coffee is grown. You can see the communities grow and learn more about coffee farming on our blog.
+I want to build solutions to every day problems. I believe the web is a sandbox which will allow me to do so in many different ways. Building products which people will use means to understand people's needs. I aim to improve the community's quality of life through user experience and web development.

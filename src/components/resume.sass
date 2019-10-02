@@ -1,0 +1,39 @@
+.resume-3-columns
+  display: block
+  column-count: 1
+  @include bp($media-medium-limit)
+    column-count: 2
+  @include bp($media-big-limit)
+    column-count: 3
+.resume-2-columns
+  display: block
+  column-count: 1
+  @include bp($media-big-limit)
+    column-count: 2
+
+.resume h2
+.resume h3,
+.resume h4
+  font-family: $body-font
+.resume-wrap
+  margin-bottom: 1em
+.resume-flex
+  @include bp($media-medium-limit)
+    display: flex
+    justify-content: space-between
+.resume-experience-wrap
+  margin-bottom: 2em
+.resume-primary
+  font-weight: 700
+.resume-duration
+.resume-secondary
+  color: $secondary-red
+.resume-location
+  color: $secondary-text-dark
+  font-size: 0.9em
+.resume-experience-list
+  list-style-type: '⣿ '
+  li::marker
+    color: $secondary-text-dark
+  li:before
+    content: none

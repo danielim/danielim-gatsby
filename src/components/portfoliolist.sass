@@ -1,0 +1,40 @@
+.portfolio-list
+.portfolio-item
+  @include bp($media-big-limit)
+    display: flex
+    flex-direction: row
+    margin-bottom: 200px
+
+.portfolio-list-image
+  @include bp($media-big-limit)
+    flex-shrink: 0
+    flex-basis: 400px
+.portfolio-list-placeholder
+  position: relative
+  .portfolio-list-image-link
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 3em
+    text-decoration: none
+    height: 100%
+    width: 100%
+    padding: 5% 0;
+    background-color: $secondary-background-dark
+    color: $text-light
+    @include bp($media-big-limit)
+      font-size: 8em
+
+.portfolio-entry-meta
+  text-align: left
+  @include bp($media-medium-limit)
+    text-align: justify
+    margin-left: 2em
+.portfolio-entry-title
+  text-align: center
+  color: $red
+  text-decoration: none
+  h2
+    margin-top: 0
+  &:hover
+    color: $secondary-red

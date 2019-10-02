@@ -1,0 +1,28 @@
+// animation duration for use with prefers-reduced-animation query mixin
+// oad: optional animation duration
+@function oad($duration) {
+  $type: type-of($duration);
+
+  @if $type == string {
+    @if $duration == s {
+      @return calc(var(--animation-toggle) * 100ms);
+    }
+    @else if $duration == m {
+      @return calc(var(--animation-toggle) * 200ms);
+    }
+    @else if $duration == l {
+      @return calc(var(--animation-toggle) * 500ms);
+    }
+    @else if $duration == xl {
+      @return calc(var(--animation-toggle) * 1s);
+    }
+  }
+  @else if $type == number {
+    $time: $duration * 1ms;
+    $result: calc(var(--animation-toggle) * #{$time});
+    @return $result;
+  }
+  @else {
+    @warn "duration argument isn't a valid type. Make sure it's a string or number";
+    }
+}
