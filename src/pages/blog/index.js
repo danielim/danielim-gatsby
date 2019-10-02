@@ -7,7 +7,7 @@ export default class BlogIndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <div
+        <header
           className="full-width-image-container margin-top-0"
           style={{
             backgroundImage: `url('/img/blog-index.png')`,
@@ -22,7 +22,7 @@ export default class BlogIndexPage extends React.Component {
           >
             Ramblings of a clueless tinkerer
           </h1>
-        </div>
+        </header>
         <section className="container">
           <BlogRoll />
         </section>

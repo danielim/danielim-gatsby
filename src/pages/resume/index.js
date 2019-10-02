@@ -6,7 +6,7 @@ export default class Index extends React.Component {
   render() {
     return (
       <Layout>
-        <article className="resume">
+        <article>
           <header
             className="full-width-image-container margin-top-0"
             style={{
@@ -16,6 +16,7 @@ export default class Index extends React.Component {
               style={{
                 boxShadow: '0.5rem 0 0 #cc0000, -0.5rem 0 0 #cc0000',
                 padding: '1rem',
+                fontSize: '2em',
               }}>
               Daniel Luis Chen
             </h1>
