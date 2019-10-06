@@ -5,6 +5,7 @@ import {graphql} from 'gatsby';
 import instagram from '../img/social/instagram.svg';
 import linkedin from '../img/social/linkedin.svg';
 import twitter from '../img/social/twitter.svg';
+import codepen from '../img/social/codepen.svg';
 import github from '../img/social/github.svg';
 
 import Layout from '../components/Layout';
@@ -40,6 +41,15 @@ export const IndexPageTemplate = ({title, heading, social}) => (
             rel="noopener noreferrer"
             target="_blank">
             <img src={linkedin} alt="Linkedin" className="social-icon" />
+          </a>
+        </li>
+        <li className="social-item">
+          <a
+            title="danielim"
+            href={social.codepen}
+            rel="noopener noreferrer"
+            target="_blank">
+            <img src={codepen} alt="CodePen" className="social-icon" />
           </a>
         </li>
         <li className="social-item">
@@ -111,6 +121,7 @@ export const pageQuery = graphql`
           linkedin
           github
           instagram
+          codepen
         }
       }
     }
