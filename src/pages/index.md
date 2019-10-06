@@ -7,4 +7,5 @@ social:
    linkedin: 'https://www.linkedin.com/in/imdanielch/'
    github: 'https://github.com/danielim/'
    instagram: 'https://www.instagram.com/imdanielchen/'
+   codepen: 'https://codepen.io/danielim'
 ---
