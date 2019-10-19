@@ -39,6 +39,7 @@ export default class Index extends React.Component {
           <div className="container">
             <div className="content">
               <h1>Contact</h1>
+              <p>You can use this contact form to message me or you can reach out to me on <a href="https://twitter.com/imdanielch">twitter</a> or <a href="https://www.linkedin.com/in/imdanielch/">linkedin</a>.</p>
               <form
                 name="contact"
                 method="post"
