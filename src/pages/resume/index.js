@@ -69,7 +69,7 @@ export default class Index extends React.Component {
                   <div className="resume-secondary">
                     Bachelor of Science Texas A&M University
                   </div>
-                  <div className="resume-duration"> August 2016 - May 2010</div>
+                  <div className="resume-duration"> August 2006 - May 2010</div>
                 </div>
                 <div className="resume-location">College Station, Texas</div>
               </div>
