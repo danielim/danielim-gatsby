@@ -42,7 +42,6 @@ class Navbar extends React.Component {
 
   render() {
     const {data} = this.props;
-    console.log(data.logo);
     return (
       <nav className="navbar" role="navigation" aria-label="main-navigation">
         <Link className="logo" to="/">

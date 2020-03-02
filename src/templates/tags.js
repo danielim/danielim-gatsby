@@ -1,8 +1,8 @@
 // @format
-import React from 'react';
-import SEO from '../components/SEO';
-import {Link, graphql} from 'gatsby';
-import Layout from '../components/Layout';
+import React from "react";
+import SEO from "../components/SEO";
+import { Link, graphql } from "gatsby";
+import Layout from "../components/Layout";
 
 class TagRoute extends React.Component {
   render() {
@@ -15,12 +15,12 @@ class TagRoute extends React.Component {
     const tag = this.props.pageContext.tag;
     const totalCount = this.props.data.allMarkdownRemark.totalCount;
     const tagHeader = `${totalCount} post${
-      totalCount === 1 ? '' : 's'
+      totalCount === 1 ? "" : "s"
     } tagged with “${tag}”`;
 
     return (
       <Layout>
-        <SEO title={`${tag}`} />
+        <SEO title={`${tag}`} pathname={`${this.props.location.pathname}`} />
         <div className="container">
           <h2 className="">{tagHeader}</h2>
           <ul className="">{postLinks}</ul>
@@ -44,8 +44,8 @@ export const tagPageQuery = graphql`
     }
     allMarkdownRemark(
       limit: 1000
-      sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {tags: {in: [$tag]}}}
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
       edges {
