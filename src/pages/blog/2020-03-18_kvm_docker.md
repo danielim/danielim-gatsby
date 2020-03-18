@@ -1,10 +1,10 @@
 ---
 templateKey: blog-post
-title: What is your life's purpose?
+title: The ordeal of KVM on Ubuntu 18.04
 date: 2020-03-18T13:58:07+1000
 featuredpost: false
 featuredimage:
-description:
+description: My experience trying to run Virtual Machines in an Ubuntu 18.04 host with Docker.
 tags:
   - kvm
   - docker
@@ -248,16 +248,27 @@ virt-install \
 ```
 
 `--name` the name of the VM.
+
 `--ram` how much RAM allocated for the VM in MegaBytes.
+
 `--disk` the path where the virtual disk will be at. This creates one in `gcow2` format. On this line you also can specify the size in GigaBytes (in this case, `240GB`).
+
 `--vcpus` How many virtual cores to allocate. Don't over allocate, don't under alocate. Meaning there's optimization for this but it's on a per use case.
+
 `--virt-type kvm` available options listed by `$ virsh capabilities`. Choose as needed.
+
 `--os-type linux` If your guest will be windows, windows.
+
 `--os-variant` optimization based on the distribution you plan on installing.
+
 `--graphics none` I don't need graphics, if you want to use VNC or of the sort, change this.
+
 `--network bridge:br0` If you didn't set up the network into libvirt, you'd use this. Otherwise, `--network=host-bridge` should work.
+
 `--location 'http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/'` Where to get install media. You can use a local ISO image too.
-`--extra-args "console=ttyS0 console=ttyS0,115200n8"` Enable console (This didn't work for me with Ubuntu. There are additional steps coming up later in [Additional Ubuntu steps](#Additional_Ubuntu_Steps)).
+
+`--extra-args "console=ttyS0 console=ttyS0,115200n8"` Enable console (This didn't work for me with Ubuntu. There are additional steps coming up later in [Additional Ubuntu steps](#Additional-Ubuntu-Steps)).
+
 [`virt-install` documentation](https://linux.die.net/man/1/virt-install) touches on all this.
 
 I'll skip the installation since for the most part is pretty self explanatory. If not, there's lots of resources online to walk you through it.
@@ -367,7 +378,7 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl restart docker
 ```
 
-From here we can go back to [Creating the VM](#Creating_the_VM).
+From here we can go back to [Creating the VM](#Creating-the-VM).
 
 Resources:
 ====
