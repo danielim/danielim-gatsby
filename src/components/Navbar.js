@@ -1,8 +1,6 @@
 // @format
 import React from 'react';
 import {Link, graphql, StaticQuery} from 'gatsby';
-import Img from 'gatsby-image';
-import PreviewCompatibleImage from './PreviewCompatibleImage';
 
 class Navbar extends React.Component {
   constructor(props) {
