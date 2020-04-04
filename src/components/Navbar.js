@@ -1,6 +1,7 @@
 // @format
 import React from 'react';
 import {Link, graphql, StaticQuery} from 'gatsby';
+import Img from 'gatsby-image';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
 
 class Navbar extends React.Component {
@@ -35,9 +36,11 @@ class Navbar extends React.Component {
 
   render() {
     const {data} = this.props;
+    console.log(data.logo);
     return (
       <nav className="navbar" role="navigation" aria-label="main-navigation">
         <Link className="logo" to="/">
+          {/*
           <PreviewCompatibleImage
             className="logo"
             imageInfo={{
@@ -45,12 +48,15 @@ class Navbar extends React.Component {
               alt: 'ren logo',
             }}
           />
+          */}
+          <img src={data.logo.childImageSharp.fixed.src} alt="ren logo" />
         </Link>
         {/* Hamburger menu */}
         <div
           className={`navbar-burger-logo ${this.state.navBarActiveClass}`}
           data-target="navMenu"
           onClick={() => this.toggleHamburger()}>
+          {/*
           <PreviewCompatibleImage
             className="navbar-burger-logo-image"
             imageInfo={{
@@ -58,6 +64,8 @@ class Navbar extends React.Component {
               alt: 'ren logo',
             }}
           />
+          */}
+          <img src={data.burger.childImageSharp.fixed.src} alt="ren logo" />
           <span className="pad-left">Menu</span>
         </div>
         <ul
@@ -107,23 +115,47 @@ class Navbar extends React.Component {
   }
 }
 
+//export default () => (
+//  <StaticQuery
+//    query={graphql`
+//      query NavbarQuery {
+//        logo: file(relativePath: {eq: "logo.png"}) {
+//          childImageSharp {
+//            fixed(width: 100, quality: 100) {
+//              ...GatsbyImageSharpFixed
+//            }
+//          }
+//        }
+//        burger: file(relativePath: {eq: "logo.png"}) {
+//          childImageSharp {
+//            fluid(maxWidth: 40, quality: 100) {
+//              ...GatsbyImageSharpFluid
+//              presentationWidth
+//            }
+//          }
+//        }
+//      }
+//    `}
+//    render={data => {
+//      return <Navbar data={data} />;
+//    }}
+//  />
+//);
 export default () => (
   <StaticQuery
     query={graphql`
       query NavbarQuery {
         logo: file(relativePath: {eq: "logo.png"}) {
           childImageSharp {
-            fluid(maxWidth: 100, quality: 100) {
-              ...GatsbyImageSharpFluid
-              presentationWidth
+            fixed(width: 100, quality: 100) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
         burger: file(relativePath: {eq: "logo.png"}) {
           childImageSharp {
-            fluid(maxWidth: 40, quality: 100) {
-              ...GatsbyImageSharpFluid
-              presentationWidth
+            fixed(width: 40, quality: 100) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
