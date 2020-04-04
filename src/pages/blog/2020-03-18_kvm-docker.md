@@ -390,4 +390,3 @@ Many thanks to the community. Those who wrote guides, those who helped troublesh
 - https://fabianlee.org/2019/04/01/kvm-creating-a-bridged-network-with-netplan-on-ubuntu-bionic/
 - https://bbs.archlinux.org/viewtopic.php?id=233727
 
-I may have missed information or could write this better, let me know by [submitting an issue :)](https://github.com/danielim/danielim-gatsby/issues)

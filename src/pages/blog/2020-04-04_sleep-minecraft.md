@@ -83,3 +83,4 @@ $ sudo systemctl restart knockd
 I'm running papermc flavor, so I also changed the `timeout-time` in `spigot.yml` to `86400` which is 1 day in seconds. This means that minecraft won't consider the server to have crashed even when it's paused for a full day. You can change this as necessary. Keep in mind that if the server does crash, it may take this long for it to realize it crashed and try to stop and restart the server.
 
 With the `timeout-time` on default `60` seconds, generally it will consider the server to have crashed on resume and stop the server, then restart it. The issue with this for me is that the server restart takes what seems to be 2 to 3 minutes. Thus, if someone tries to connect, they'll time out before the server is ready.
+

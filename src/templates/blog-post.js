@@ -23,6 +23,7 @@ export const BlogPostTemplate = ({
       <h1 className="">{title}</h1>
       <p>{description}</p>
       <PostContent content={content} />
+      <p>Got comments or issues with what I wrote? Please let me know by <a href="https://github.com/danielim/danielim-gatsby/issues">submitting an issue with the blog title :)</a></p>
       {tags && tags.length ? (
         <div style={{marginTop: `4rem`, marginBottom: `12rem`}}>
           <h4>Tags</h4>
