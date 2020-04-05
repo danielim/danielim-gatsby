@@ -12,6 +12,14 @@ class Navbar extends React.Component {
     };
   }
 
+  handleKeyDownBurger = (ev) => {
+    if (ev.keyCode === 13) {
+      return this.toggleHamburger();
+    }
+  }
+  handleClickBurger = () => {
+    return this.toggleHamburger();
+  }
   toggleHamburger = () => {
     // toggle the burger active boolean in the state
     this.setState(
@@ -38,32 +46,16 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main-navigation">
         <Link className="logo" to="/">
-          {/*
-          <PreviewCompatibleImage
-            className="logo"
-            imageInfo={{
-              image: data.logo,
-              alt: 'ren logo',
-            }}
-          />
-          */}
           <img src={data.logo.childImageSharp.fixed.src} alt="ren logo" />
         </Link>
         {/* Hamburger menu */}
         <div
+          role="button"
           className={`navbar-burger-logo ${this.state.navBarActiveClass}`}
           data-target="navMenu"
-          onClick={() => this.toggleHamburger()}>
-          {/*
-          <PreviewCompatibleImage
-            className="navbar-burger-logo-image"
-            imageInfo={{
-              image: data.burger,
-              alt: 'ren logo',
-            }}
-          />
-          */}
-          <img src={data.burger.childImageSharp.fixed.src} alt="ren logo" />
+          onKeyDown={this.handleKeyDownBurger}
+          onClick={this.handleClickBurger}>
+          <img style={{width: "40px"}} src={data.logo.childImageSharp.fixed.src} alt="ren logo" />
           <span className="pad-left">Menu</span>
         </div>
         <ul
@@ -113,32 +105,6 @@ class Navbar extends React.Component {
   }
 }
 
-//export default () => (
-//  <StaticQuery
-//    query={graphql`
-//      query NavbarQuery {
-//        logo: file(relativePath: {eq: "logo.png"}) {
-//          childImageSharp {
-//            fixed(width: 100, quality: 100) {
-//              ...GatsbyImageSharpFixed
-//            }
-//          }
-//        }
-//        burger: file(relativePath: {eq: "logo.png"}) {
-//          childImageSharp {
-//            fluid(maxWidth: 40, quality: 100) {
-//              ...GatsbyImageSharpFluid
-//              presentationWidth
-//            }
-//          }
-//        }
-//      }
-//    `}
-//    render={data => {
-//      return <Navbar data={data} />;
-//    }}
-//  />
-//);
 export default () => (
   <StaticQuery
     query={graphql`
@@ -146,13 +112,6 @@ export default () => (
         logo: file(relativePath: {eq: "logo.png"}) {
           childImageSharp {
             fixed(width: 100, quality: 100) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-        burger: file(relativePath: {eq: "logo.png"}) {
-          childImageSharp {
-            fixed(width: 40, quality: 100) {
               ...GatsbyImageSharpFixed
             }
           }
