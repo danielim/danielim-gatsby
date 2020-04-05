@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: Sleep for Docker Minecraft
-date: 2020-04-01T15:32:17-0500
+date: 2020-04-04T16:33:24-0500
 featuredpost: false
 featuredimage: /static/img/blog/featured/minecraft.png
 description: My experience trying to run Virtual Machines in an Ubuntu 18.04 host with Docker.
@@ -19,7 +19,7 @@ Based on the guide by [Michiel Bruijn on Mojang bug reports](https://bugs.mojang
 
 make a shell script with the following (remember to modify CONTAINER):
 
-```sh
+```bash
 #!/bin/sh
 # Check if there are still connections made to minecraft server, otherwise PAUSE the process so that it won't take any CPU anymore.
 # Also check /lib/systemd/system/knockd.service
@@ -31,19 +31,18 @@ and name it `minecraft-sleep.sh`. This script checks for established connections
 
 change its permissions
 
-```sh
-$ sudo chmod ugo+x minecraft_sleep.sh
+```bash{promptUser: user}
+sudo chmod ugo+x minecraft_sleep.sh
 ```
-
 then add it to crontabs
 
-```sh
-$ sudo crontab -e
+```bash{promptUser: user}
+sudo crontab -e
 ```
 
 Put this in the cronjob:
 
-```
+```properties
 */10 * * * * /home/user/minecraft-sleep.sh
 ```
 
@@ -51,13 +50,13 @@ The path will be where you placed and named the previous script. This cronjob wi
 
 Then use `Knock` to trigger when a connection is started.
 
-```sh
-$ sudo apt-get install knockd
+```bash{promptUser: user}
+sudo apt-get install knockd
 ```
 
 edit `/etc/knockd.conf` and replace with:
 
-```
+```properties
 [options]
 # UseSyslog
  interface = ens2
@@ -69,15 +68,15 @@ edit `/etc/knockd.conf` and replace with:
  tcpflags = ack
 ```
 
-Change interface to your interface (`$ ip addr`, and check what network interface is used to connect to the network)
+Change interface to your interface (do `ip addr`, and check what network interface is used to connect to the network)
 
 Change `<CONTAINER>` to your minecraft container name/id.
 
 Change sequence to the port you use for your minecraft. `25565` is the default minecraft port.
 
-```
-$ sudo systemctl daemon-reload
-$ sudo systemctl restart knockd
+```bash{promptUser: user}
+sudo systemctl daemon-reload
+sudo systemctl restart knockd
 ```
 
 I'm running papermc flavor, so I also changed the `timeout-time` in `spigot.yml` to `86400` which is 1 day in seconds. This means that minecraft won't consider the server to have crashed even when it's paused for a full day. You can change this as necessary. Keep in mind that if the server does crash, it may take this long for it to realize it crashed and try to stop and restart the server.

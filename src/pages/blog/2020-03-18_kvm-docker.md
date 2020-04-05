@@ -26,13 +26,13 @@ Setting up the Host
 ----
 ### Verify hardware support for Virtualization
 
-```bash
-# egrep -c '(vmx|svm)' /proc/cpuinfo
+```bash{promptUser: user}
+sudo egrep -c '(vmx|svm)' /proc/cpuinfo
 ```
 Has to return a number more than 0. If not, enable Virtualization in your BIOS.
 
-```bash
-$ ls /dev/kvm
+```bash{promptUser: user}
+ls /dev/kvm
 ```
 The guide says to install `kvm-ok`, I figured just checking if its' listed should do for Ubuntu. If you are worried, [click here to go to the original guide](https://www.linuxtechi.com/install-configure-kvm-ubuntu-18-04-server/).
 
@@ -40,37 +40,38 @@ The guide says to install `kvm-ok`, I figured just checking if its' listed shoul
 
 ### Installing KVM
 
-```bash
-$ sudo apt update
-$ sudo apt install qemu qemu-kvm libvirt-bin  bridge-utils  virt-manager
+```bash{promptUser: user}
+sudo apt update
+sudo apt install qemu qemu-kvm libvirt-bin  bridge-utils  virt-manager
 ```
 `virt-manager` is a GUI management software. I'm managing the server through SSH so I technically don't need it. However, it does depend on the packages I do need so this seems quicker to install. It also includes other tools which would be useful later on. [Click here to learn more](https://virt-manager.org/)
 
 Add user to group
-```bash
-$ sudo adduser `id -un` libvirtd
+```bash{promptUser: user}
+sudo adduser `id -un` libvirtd
 ```
 You'll need to re-login for it to take effect. This allows your user to manage VMs
 
 Turn on libvirtd
 
-```bash
-$ sudo systemctl start libvirtd
-$ sudo systemctl enable libvirtd
+```bash{promptUser: user}
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
 ```
 You can check the status by issuing:
-```bash
-$ systemctl status libvirtd
+```bash{promptUser: user}
+systemctl status libvirtd
 ```
 Confirm installation was a success by checking with `virsh`
 
-```bash
-$ virsh list --all
+```bash{promptUser: user}
+virsh list --all
 ```
 this should return an empty list of virtual machines available.
 If you get an error
 
-```
+```bash{outputLines:2-3}{promptUser: user}
+virsh list --all
 libvir: Remote error : Permission denied
 error: failed to connect to the hypervisor
 ```
@@ -83,10 +84,10 @@ Ubuntu 18.04.4 server uses netplan to manage the network. Its a template configu
 
 The file could be named `50-cloud-init.yaml` or `01-netcfg.yaml`. Make a backup of the file just in case, eg:
 
-```bash
-$ ls /etc/netplan/
+```bash{outputLines:2}{promptUser: user}
+ls /etc/netplan/
 50-cloud-init.yaml
-$ sudo cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml-backup
+sudo cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml-backup
 ```
 
 Let's edit our network config
@@ -161,21 +162,24 @@ network:
       dhcp6: false
 ```
 Once this is configured, we should generate the config files which `networkd` will use, and apply them (WARNING: this will disconnect the network and reattach it as per configured. If there's an error, you may lose the ability to SSH into the server. Otherwise, it will disconnect briefly and then reconnect, may take a minute).
-```bash
-$ sudo netplan --debug generate
-$ sudo netplan --debug apply
+```bash{promptUser: user}
+sudo netplan --debug generate
+sudo netplan --debug apply
 ```
 Confirm the changes applied properly
-```bash
-$ sudo networkctl status -a
+```bash{promptUser: user}
+sudo networkctl status -a
 ```
 and look for the entry `br0`, with:
-```
+```bash{outputLines: 2-10}{promptUser: user}
+sudo networkctl status -a
+[...]
 State: routable, (configured)
 Driver: bridge
 Address: 192.168.4.2
 Gateway: 192.168.4.1
 DNS: 192.168.4.1
+[...]
 ```
 among other information.
 
@@ -206,13 +210,13 @@ create a file called `host-bridge.xml` and add in the contents here.
 </network>
 ```
 Then create the network
-```bash
+```bash{promptUser: user}
 $ virsh net-define host-bridge.xml
 $ virsh net-start host-bridge
 $ virsh net-autostart host-bridge
 ```
 Check it with:
-```bash
+```bash{outputLines: 2-5}{promptUser: user}
 $ virsh net-list --all
 
  Name                 State      Autostart     Persistent
@@ -285,7 +289,7 @@ Otherwise, we use SSH.
 
 edit `/etc/default/grub`:
 
-```
+```properties
 # edit this line to add `console=ttyS0,115200n8 console=tty0`
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash console=ttyS0,115200n8 console=tty0"
 
@@ -296,13 +300,15 @@ GRUB_TERMINAL=console
 
 update grub
 
-```bash
-$ sudo update-grub
+```bash{promptUser: user}
+sudo update-grub
 ```
 
 Reboot the VM
 
-`$ virsh reboot ubuntu18`
+```bash{promptUser: user}
+virsh reboot ubuntu18
+```
 
 for it to take effect.
 
@@ -310,7 +316,7 @@ This will allow you to do `virsh console ubuntu18`. To get a terminal.
 
 The `--extra-args` line added
 
-```
+```properties
 GRUB_TERMINAL=serial
 GRUB_SERIAL_COMMAND="serial --unit=0 --speed=115200 --word=8 --parity=no --stopp
 =1"
@@ -325,8 +331,8 @@ Before installing CentOS 7, I tried CentOS8. For some reason it wouldn't let me 
 
 Regardless,
 
-```bash
-$ virt-install -n cent8 -r 4096 --vcpus=3 --disk path=/mnt/raid/vm/disks/cent7.imgbus=virtio,size=100 --os-variant rhel7 --nographics --location http://mirror.centos.org/centos/7/os/x86_64/ --extra-args console=ttyS0
+```bash{promptUser: user}
+virt-install -n cent8 -r 4096 --vcpus=3 --disk path=/mnt/raid/vm/disks/cent7.imgbus=virtio,size=100 --os-variant rhel7 --nographics --location http://mirror.centos.org/centos/7/os/x86_64/ --extra-args console=ttyS0
 ```
 
 These are the parameters I used. 4GB RAM, 3 vCPUs, 100GB disk
@@ -349,19 +355,19 @@ This is because docker enables br_netfilter on for the bridge and drops connecti
 
 We'll add an entry to iptables which should free up our `br0` from Docker's clutches.
 
-```bash
-$ sudo systemctl edit docker
+```bash{promptUser: user}
+sudo systemctl edit docker
 ```
 
 If you want to use vim as your editor
 
-```bash
-$ EDITOR=vim sudo -E systemctl edit docker
+```bash{promptUser: user}
+EDITOR=vim sudo -E systemctl edit docker
 ```
 
 Add in the text:
 
-```
+```properties
 [Service]
 ExecStartPre=-/sbin/iptables -D FORWARD -p all -i br0 -j ACCEPT
 ExecStartPre=/sbin/iptables -A FORWARD -p all -i br0 -j ACCEPT
@@ -373,9 +379,9 @@ Second command adds the rule back. This happens every time Docker starts because
 
 Now we can apply, and restart docker.
 
-```bash
-$ sudo systemctl daemon-reload
-$ sudo systemctl restart docker
+```bash{promptUser: user}
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 ```
 
 From here we can go back to [Creating the VM](#Creating-the-VM).

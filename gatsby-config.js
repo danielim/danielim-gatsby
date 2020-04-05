@@ -4,8 +4,12 @@ var proxy = require('http-proxy-middleware');
 module.exports = {
   siteMetadata: {
     title: 'Daniel Chen',
+    titleTemplate: "%s - Daniel Chen",
     description:
-      "A place to log Daniel's ramblings over time. Daniel is a jack of all trades, web developer/UX/Project Management enthusiast being the current career path. However, he is also interested in many other hobbies.",
+      "A place to log Daniel's ramblings over time. Daniel is a jack of all trades, Web Developer/UX/Project Management enthusiast being the current career path. However, he is also interested in many other hobbies.",
+    url: "https://www.daniel.im",
+    image: "/img/social.jpg",
+    twitterUsername: "@imdanielch",
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -65,7 +69,7 @@ module.exports = {
               // stripping.
               // A suggested value for English speakers is the non-ascii
               // character '›'.
-              inlineCodeMarker: null,
+              inlineCodeMarker: '˒',
               // This lets you set up language aliases.  For example,
               // setting this to '{ sh: "bash" }' will let you use
               // the language "sh" which will highlight using the
@@ -103,7 +107,7 @@ module.exports = {
               // Customize the prompt used in shell output
               // Values below are default
               prompt: {
-                user: 'root',
+                user: 'user',
                 host: 'localhost',
                 global: false,
               },

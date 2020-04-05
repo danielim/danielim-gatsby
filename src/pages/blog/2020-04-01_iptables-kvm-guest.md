@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: iptables for my minecraft server
-date: 2020-04-04T15:55:16-0500
+date: 2020-04-01T15:55:16-0500
 featuredpost: false
 featuredimage: /static/img/blog/featured/minecraft.png
 description: My experience trying to run Virtual Machines in an Ubuntu 18.04 host with Docker.
@@ -62,8 +62,8 @@ After running tests without setting the IP range (so rule applies to even those 
 
 You can add these rules by typing:
 
-```sh
-$ sudo iptables <rule>
+```bash{promptUser: user}{promptHost: localhost}
+sudo iptables <rule>
 ```
 
 Quick explanation of one of the rules:
@@ -72,5 +72,8 @@ Quick explanation of one of the rules:
 
 `-A`ppend to `FORWARD` chain `-d`estination IP `192.168.3.148/32`, at `-i`nterface `br0`, `-p`rotocol `tcp` `-m`atch `iprange`  from `--src-range 192.168.3.2-192.168.3.254` `-j`ump to `REJECT` and also `--reject-with icmp-port-unreachable` (reject ping)
 
-You can also do INSERT with `-I` instead of `-A` and it will put the rule at the beginning of the rules list. You can also do `iptables -I CHAIN #` where `#` is the rule number where you want to insert into. You can get the rules list by `$ sudo iptables -L -v --line-numbers`.
+You can also do INSERT with `-I` instead of `-A` and it will put the rule at the beginning of the rules list. You can also do `iptables -I CHAIN #` where `#` is the rule number where you want to insert into. You can get the rules list by
+```bash{promptUser: user}{promptHost: localhost}
+sudo iptables -L -v --line-numbers
+```
 
