@@ -32,16 +32,14 @@ const SEO = ({ titleTemplate, title, description, image, imageAlt, pathname, art
           <Helmet title={seo.title} titleTemplate={seo.titleTemplate}>
             <meta name="description" content={seo.description} />
             <meta name="image" content={seo.image} />
-            {seo.url && <meta name="og:url" content={seo.url} />}
-            {(article ? true : null) && (
-              <meta name="og:type" content="article" />
-            )}
-            {seo.title && <meta name="og:title" content={seo.title} />}
+            {seo.url && <meta name="og:url" property="og:url" content={seo.url} />}
+            <meta name="og:type" property="og:type" content={`${article ? "article": "website"}`} />
+            {seo.title && <meta name="og:title" property="og:title" content={seo.title} />}
             {seo.description && (
-              <meta name="og:description" content={seo.description} />
+              <meta name="og:description" property="og:description" content={seo.description} />
             )}
-            {seo.updatedTime && <meta name="og:updated_time" content={seo.updatedTime} />}
-            {seo.image && <meta name="og:image" content={seo.image} />}
+            {seo.updatedTime && <meta name="og:updated_time" property="og:updated_time" content={seo.updatedTime} />}
+            {seo.image && <meta name="og:image" property="og:image" content={seo.image} />}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image:alt" content={seo.imageAlt} />
             {twitterUsername && (
