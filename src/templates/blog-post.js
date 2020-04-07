@@ -62,7 +62,7 @@ const BlogPost = ({data}) => {
           <SEO
             title={`${post.frontmatter.title}`}
             updatedTime={`${post.frontmatter.updatedTime}`}
-            image={`${post.frontmatter.featuredimage.childImageSharp.fixed.src}`}
+            image={`${post.frontmatter.featuredimage && post.frontmatter.featuredimage.childImageSharp.fixed.src || undefined}`}
             imageAlt={post.frontmatter.featuredimagealt}
             description={`${post.frontmatter.description}`} />
         }
