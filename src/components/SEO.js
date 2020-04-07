@@ -2,6 +2,8 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
+import { withPrefix } from "gatsby"
+
 const SEO = ({ titleTemplate, title, description, image, imageAlt, pathname, article, updatedTime }) => (
   <StaticQuery
     query={query}
@@ -30,16 +32,41 @@ const SEO = ({ titleTemplate, title, description, image, imageAlt, pathname, art
       return (
         <>
           <Helmet title={seo.title} titleTemplate={seo.titleTemplate}>
+            <html lang="en" />
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href={`${withPrefix("/")}img/apple-touch-icon.png`}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              href={`${withPrefix("/")}img/favicon-32x32.png`}
+              sizes="32x32"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              href={`${withPrefix("/")}img/favicon-16x16.png`}
+              sizes="16x16"
+            />
+
+            <link
+              rel="mask-icon"
+              href={`${withPrefix("/")}img/safari-pinned-tab.svg`}
+              color="#ff4400"
+            />
+            <meta name="theme-color" content="#f5f2ed" />
             <meta name="description" content={seo.description} />
             <meta name="image" content={seo.image} />
-            {seo.url && <meta name="og:url" property="og:url" content={seo.url} />}
-            <meta name="og:type" property="og:type" content={`${article ? "article": "website"}`} />
-            {seo.title && <meta name="og:title" property="og:title" content={seo.title} />}
+            {seo.url && <meta property="og:url" content={seo.url} />}
+            <meta property="og:type" content={`${article ? "article": "website"}`} />
+            {seo.title && <meta property="og:title" content={seo.title} />}
             {seo.description && (
-              <meta name="og:description" property="og:description" content={seo.description} />
+              <meta property="og:description" content={seo.description} />
             )}
-            {seo.updatedTime && <meta name="og:updated_time" property="og:updated_time" content={seo.updatedTime} />}
-            {seo.image && <meta name="og:image" property="og:image" content={seo.image} />}
+            {seo.updatedTime && <meta property="og:updated_time" content={seo.updatedTime} />}
+            {seo.image && <meta property="og:image" content={seo.image} />}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image:alt" content={seo.imageAlt} />
             {twitterUsername && (
