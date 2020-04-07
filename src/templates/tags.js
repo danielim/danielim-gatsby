@@ -1,6 +1,6 @@
 // @format
 import React from 'react';
-import Helmet from 'react-helmet';
+import SEO from '../components/SEO';
 import {Link, graphql} from 'gatsby';
 import Layout from '../components/Layout';
 
@@ -13,7 +13,6 @@ class TagRoute extends React.Component {
       </li>
     ));
     const tag = this.props.pageContext.tag;
-    const title = this.props.data.site.siteMetadata.title;
     const totalCount = this.props.data.allMarkdownRemark.totalCount;
     const tagHeader = `${totalCount} post${
       totalCount === 1 ? '' : 's'
@@ -21,7 +20,7 @@ class TagRoute extends React.Component {
 
     return (
       <Layout>
-        <Helmet title={`${tag} | ${title}`} />
+        <SEO title={`${tag}`} />
         <div className="container">
           <h2 className="">{tagHeader}</h2>
           <ul className="">{postLinks}</ul>

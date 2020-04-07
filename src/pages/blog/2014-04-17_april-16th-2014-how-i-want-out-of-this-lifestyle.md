@@ -4,6 +4,7 @@ status: published
 title: April 16th, 2014 How I want out of this lifestyle
 date: 2014-04-17T05:15:10.000Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:

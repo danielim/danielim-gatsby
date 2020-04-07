@@ -4,6 +4,7 @@ status: published
 title: February 3rd, 2014 - How I'm learning Korean.
 date: 2014-02-07T20:11:49.000Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:

@@ -4,6 +4,7 @@ status: published
 title: February 18th, 2013 - How I pass my time at work.
 date: 2014-02-19T16:02:29.000Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:

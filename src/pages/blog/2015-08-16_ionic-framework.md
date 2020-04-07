@@ -4,6 +4,7 @@ status: published
 title: Ionic framework 2015-06-20~2015-07-xx
 date: 2015-08-16T05:56:40.744Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

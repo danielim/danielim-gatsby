@@ -1,11 +1,15 @@
 // @format
 import React from 'react';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 
 export default class Index extends React.Component {
   render() {
     return (
       <Layout>
+          <SEO
+            title={`Resume`}
+            description={`Curriculum Vitae`} />
         <article>
           <header
             className="full-width-image-container margin-top-0"
@@ -69,7 +73,7 @@ export default class Index extends React.Component {
                   <div className="resume-secondary">
                     Bachelor of Science Texas A&M University
                   </div>
-                  <div className="resume-duration"> August 2016 - May 2010</div>
+                  <div className="resume-duration"> August 2006 - May 2010</div>
                 </div>
                 <div className="resume-location">College Station, Texas</div>
               </div>

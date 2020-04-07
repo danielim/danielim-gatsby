@@ -26,7 +26,7 @@ class BlogRoll extends React.Component {
                 {post.excerpt}
                 <br />
                 <Link className="blogroll-keep-reading" to={post.fields.slug}>
-                  Keep Reading →
+                  Continue reading "{post.frontmatter.title}" →
                 </Link>
               </p>
             </section>

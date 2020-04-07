@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {kebabCase} from 'lodash';
-import Helmet from 'react-helmet';
+import SEO from '../components/SEO';
 import {graphql, Link} from 'gatsby';
 import Layout from '../components/Layout';
 import PortfolioContent, {
@@ -69,7 +69,6 @@ PortfolioEntryTemplate.propTypes = {
 
 const PortfolioEntry = ({data}) => {
   const {markdownRemark: entry} = data;
-  console.log(entry.html);
   return (
     <Layout>
       <PortfolioEntryTemplate
@@ -78,13 +77,12 @@ const PortfolioEntry = ({data}) => {
         coverImage={entry.frontmatter.coverimage}
         description={entry.frontmatter.description}
         helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${entry.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${entry.frontmatter.description}`}
-            />
-          </Helmet>
+          <SEO
+            title={`${entry.frontmatter.title}`}
+            updatedTime={`${entry.frontmatter.updatedTime}`}
+            image={`${entry.frontmatter.featuredimage.childImageSharp.fixed.src}`}
+            imageAlt={entry.frontmatter.featuredimagealt}
+            description={`${entry.frontmatter.description}`} />
         }
         tags={entry.frontmatter.tags}
         title={entry.frontmatter.title}
@@ -108,7 +106,9 @@ export const pageQuery = graphql`
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        updatedTime: date
         title
+        description
         coverimage {
           childImageSharp {
             fluid(maxWidth: 1024, quality: 100) {
@@ -116,7 +116,13 @@ export const pageQuery = graphql`
             }
           }
         }
-        description
+        featuredimage: coverimage {
+          childImageSharp {
+            fixed(width: 1200, quality: 100) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
         tags
       }
     }

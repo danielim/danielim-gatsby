@@ -4,6 +4,7 @@ title: What is your life's purpose?
 date: 2019-08-24T18:03:07+1000
 featuredpost: false
 featuredimage:
+featuredimagealt:
 description:
 tags:
   - rambling

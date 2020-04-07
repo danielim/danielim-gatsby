@@ -4,6 +4,7 @@ status: published
 title: Blog redesigned.
 date: 2015-07-12T06:40:04.906Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

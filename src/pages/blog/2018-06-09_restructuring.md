@@ -4,7 +4,8 @@ status: published
 title: Restructuring
 date: 2018-06-09T19:22:40.625Z
 featuredpost: false
-featuredimage: 
+featuredimagealt:
+featuredimage:
 description:
 tags:
 ---

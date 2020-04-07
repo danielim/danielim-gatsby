@@ -4,7 +4,8 @@ status: published
 title: Ubuntu issues.
 date: 2015-11-02T02:21:52.374Z
 featuredpost: false
-featuredimage: 
+featuredimagealt:
+featuredimage:
 description:
 tags:
   - troubleshoot
@@ -18,6 +19,7 @@ After looking around, and installing a whole bunch of other Desktop Environments
 By removing everything in `~/.cache/` and `~/.kde/`, you basically are cleaning up and starting fresh. A reboot and it worked for me.
 
 Note: well, not completely, in between I also purged my kubuntu-desktop with `apt-get purge kubuntu-desktop` and reinstalled `apt-get install --no-install-recommends kubuntu-desktop`, but I question if this was necessary at all.
+
 ```
 DISTRIB_ID=Ubuntu
 DISTRIB_RELEASE=15.04
@@ -34,17 +36,21 @@ SUPPORT_URL="http://help.ubuntu.com/"
 BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
 ```
 
-##Ubuntu Unity Dash showing no applications:
+## Ubuntu Unity Dash showing no applications:
+
 http://askubuntu.com/questions/125843/dash-search-gives-no-result
 
 Try wiping cache:
+
 ```
 $ rm -rf ~/.cache
 ```
+
 Try installing `unity-lens-applications` and `unity-lens-files` relog:
+
 ```
 $ sudo apt-get install unity-lens-applications unity-lens-files
 ```
 
-#Irssi or Weechat shortcut for switching windows `alt+#` does not work in Unity/Gnome
+# Irssi or Weechat shortcut for switching windows `alt+#` does not work in Unity/Gnome
 Issue is gnome-terminal has shortcuts which use the same combination to switch between terminal tabs. By disabling these, your commands will pass through to irssi/weechat and they will work properly. `Edit-> Preferences`, navigate to `shortcuts` tab and locate `Switch to Tab %d`, [1~10]. Clicking on the shortcut and hitting `backspace` will disable the shortcut.
