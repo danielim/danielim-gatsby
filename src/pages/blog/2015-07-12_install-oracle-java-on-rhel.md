@@ -4,6 +4,7 @@ status: published
 title: Install Oracle Java on RHEL*
 date: 2015-07-12T02:40:15.018Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

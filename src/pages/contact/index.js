@@ -1,6 +1,7 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
+import SEO from '../../components/SEO';
 
 function encode(data) {
   return Object.keys(data)
@@ -36,6 +37,9 @@ export default class Index extends React.Component {
   render() {
     return (
       <Layout>
+          <SEO
+            title={`Contact`}
+            description={`Contact page for Daniel Chen. Please fill in your name, e-mail, and message. I'll try to get back to you as soon as possible.`} />
           <div className="container">
             <div className="content">
               <h1>Contact</h1>

@@ -4,6 +4,7 @@ status: published
 title: Ubuntu issues.
 date: 2015-11-02T02:21:52.374Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

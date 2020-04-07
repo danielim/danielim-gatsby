@@ -3,12 +3,13 @@ var proxy = require('http-proxy-middleware');
 
 module.exports = {
   siteMetadata: {
-    title: 'Daniel Chen',
-    titleTemplate: "%s - Daniel Chen",
+    title: 'daniel.im',
+    defaultTitleTemplate: "%s | Daniel Chen",
     description:
       "A place to log Daniel's ramblings over time. Daniel is a jack of all trades, Web Developer/UX/Project Management enthusiast being the current career path. However, he is also interested in many other hobbies.",
     url: "https://www.daniel.im",
-    image: "/img/social.jpg",
+    image: "/img/fb-thumbnail.png",
+    imageAlt: "Aging paper with the Ren logo to the left side, and Ramblings of Daniel Chen to the right",
     twitterUsername: "@imdanielch",
   },
   plugins: [

@@ -4,6 +4,7 @@ status: published
 title: Windows 8 partition won't mount in Linux.
 date: 2015-03-22T05:12:12.000Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

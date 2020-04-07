@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {kebabCase} from 'lodash';
-import Helmet from 'react-helmet';
 import {graphql, Link} from 'gatsby';
+import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import Content, {HTMLContent} from '../components/Content';
 
@@ -51,6 +51,7 @@ BlogPostTemplate.propTypes = {
 const BlogPost = ({data}) => {
   const {markdownRemark: post} = data;
 
+  console.log(post.frontmatter);
   return (
     <Layout>
       <BlogPostTemplate
@@ -58,13 +59,12 @@ const BlogPost = ({data}) => {
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-          </Helmet>
+          <SEO
+            title={`${post.frontmatter.title}`}
+            updatedTime={`${post.frontmatter.updatedTime}`}
+            image={`${post.frontmatter.featuredimage.childImageSharp.fixed.src}`}
+            imageAlt={post.frontmatter.featuredimagealt}
+            description={`${post.frontmatter.description}`} />
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
@@ -88,8 +88,17 @@ export const pageQuery = graphql`
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        updatedTime: date
         title
         description
+        featuredimage {
+          childImageSharp {
+            fixed(width: 1200, quality: 100) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+        featuredimagealt
         tags
       }
     }

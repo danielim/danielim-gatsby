@@ -4,6 +4,7 @@ status: published
 title: Installing Aseprite from GitHub
 date: 2015-05-08T18:47:01.000Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

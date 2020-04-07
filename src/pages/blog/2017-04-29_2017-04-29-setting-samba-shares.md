@@ -4,6 +4,7 @@ status: published
 title: 2017-04-29 Setting samba shares
 date: 2017-04-29T06:36:39.213Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:

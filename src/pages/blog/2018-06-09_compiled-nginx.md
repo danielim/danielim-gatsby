@@ -4,6 +4,7 @@ status: published
 title: compiled nginx in ubuntu 16.04
 date: 2018-06-09T19:09:08.051Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:

@@ -4,6 +4,7 @@ title: iptables for my minecraft server
 date: 2020-04-01T15:55:16-0500
 featuredpost: false
 featuredimage: /static/img/blog/featured/minecraft.png
+featuredimagealt:
 description: My experience trying to run Virtual Machines in an Ubuntu 18.04 host with Docker.
 tags:
   - kvm

@@ -4,6 +4,7 @@ status: published
 title: KVM setup and installing guest VMs CentOS 7
 date: 2015-03-12T02:28:05.000Z
 featuredpost: true
+featuredimagealt:
 featuredimage: 
 description:
 tags:

@@ -4,6 +4,7 @@ status: published
 title: Business cards
 date: 2015-07-16T23:30:05.223Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

@@ -4,6 +4,7 @@ status: published
 title: python imports
 date: 2017-01-09T20:13:59.817Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

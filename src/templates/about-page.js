@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import SEO from '../components/SEO';
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
@@ -28,9 +29,12 @@ const AboutPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO
+        title={`About`} />
       <AboutPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
+        helmet={<SEO />}
         content={post.html}
       />
     </Layout>

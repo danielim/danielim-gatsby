@@ -4,6 +4,7 @@ status: published
 title: Setting up a server architecture.
 date: 2015-03-05T17:46:31.000Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:

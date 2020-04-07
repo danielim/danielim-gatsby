@@ -4,6 +4,7 @@ status: published
 title: Set up Ghost blog in Ubuntu 14.04
 date: 2015-07-09T06:41:37.449Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

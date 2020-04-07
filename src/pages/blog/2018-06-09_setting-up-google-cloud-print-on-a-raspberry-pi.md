@@ -4,6 +4,7 @@ status: published
 title: Setting up google cloud print on a raspberry pi
 date: 2018-06-09T19:08:42.740Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:

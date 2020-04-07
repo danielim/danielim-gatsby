@@ -4,6 +4,7 @@ status: published
 title: Goals, values, and interests.
 date: 2015-08-02T23:39:26.436Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

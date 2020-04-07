@@ -4,6 +4,7 @@ status: published
 title: Git on windows
 date: 2017-10-04T17:50:54.619Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

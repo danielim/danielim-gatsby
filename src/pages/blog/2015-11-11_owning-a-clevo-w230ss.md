@@ -4,6 +4,7 @@ status: published
 title: Owning a Clevo W230SS
 date: 2015-11-11T22:13:01.563Z
 featuredpost: false
+featuredimagealt:
 featuredimage:
 description:
 tags:

@@ -4,6 +4,7 @@ status: published
 title: 2017-05-06 Translation of "Lack of Time Syndrome, the meaning of hurried lifestyle" by Seaweed Bear.
 date: 2017-05-17T05:01:48.165Z
 featuredpost: false
+featuredimagealt:
 featuredimage: 
 description:
 tags:
