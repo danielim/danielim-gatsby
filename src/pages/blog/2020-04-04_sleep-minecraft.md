@@ -5,12 +5,12 @@ date: 2020-04-04T16:33:24-0500
 featuredpost: false
 featuredimage: /static/img/blog/featured/minecraft.png
 featuredimagealt: picture of minecraft login screen
-description: My experience trying to run Virtual Machines in an Ubuntu 18.04 host with Docker.
+description: Porting a solution to sleep minecraft servers when nobody is online to docker-minecraft-server by using docker pause and unpause.
 tags:
   - minecraft
   - docker
   - kvm
-  - ubuntu 18.04
+  - ubuntu
 ---
 Using [docker-minecraft-server](https://github.com/itzg/docker-minecraft-server)
 
