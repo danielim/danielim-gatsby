@@ -51,7 +51,7 @@ class Navbar extends React.Component {
         {/* https://github.com/reactjs/react-a11y/blob/master/docs/rules/interactive-supports-focus.md */}
         <div
           role="button"
-          tabindex="0"
+          tabIndex="0"
           className={`navbar-burger-logo ${this.state.navBarActiveClass}`}
           data-target="navMenu"
           onKeyDown={this.handleKeyDownBurger}
@@ -71,7 +71,7 @@ class Navbar extends React.Component {
           <ul className={`navbar-menu-list`}>
             <li className="navbar-item item-burger-close">
               <div
-                tabindex="0"
+                tabIndex="0"
                 role="button"
                 className={`navbar-burger-close ${this.state.navBarActiveClass}`}
                 data-target="navMenu"
