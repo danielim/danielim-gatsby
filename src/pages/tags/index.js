@@ -1,11 +1,12 @@
 // @format
 import React from 'react';
 import {kebabCase} from 'lodash';
-import Helmet from 'react-helmet';
 import {Link, graphql} from 'gatsby';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 
 const TagsPage = ({
+  location,
   data: {
     allMarkdownRemark: {group},
     site: {
@@ -14,7 +15,10 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-    <Helmet title={`Tags | ${title}`} />
+    <SEO
+      pathname={`${location.pathname}`}
+      title={`Tags`}
+      description={`list of tags which allow you to browse through the content of this website by topic.`} />
     <section className="container">
       <h1>Tags</h1>
       <ul className="tag-list">

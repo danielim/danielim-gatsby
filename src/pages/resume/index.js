@@ -8,6 +8,7 @@ export default class Index extends React.Component {
     return (
       <Layout>
           <SEO
+            pathname={`${this.props.location.pathname}`}
             title={`Resume`}
             description={`Curriculum Vitae`} />
         <article>

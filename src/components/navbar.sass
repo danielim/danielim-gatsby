@@ -1,6 +1,4 @@
 // @format
-// navbar-link background SVG
-@import "./navbar-bgsvg.sass"
 
 .navbar
   display: flex
@@ -49,7 +47,7 @@
     display: none
 
 .navbar-burger-close
-  background-color: rgba(50,50,50,0.5)
+  background-color: rgb(50,50,50)
   color: $text-light
   visibility: 0
   opacity: 0
@@ -64,17 +62,36 @@
 .navbar-menu
   position: absolute
   background-color: $background-dark
-  width: 100vw
+  width: 100%
   font-weight: 600
   height: 100vh
   display: block
   z-index: 1
   margin: 0
   top: -100vh
+  overflow: hidden
   transition: transform oad(m)
+  @include bp($media-big-limit)
+    transition: none
   &.is-active
     transform: translateY(100vh)
 
+  .navbar-menu-list
+    height: 100%
+    overflow: auto
+    margin-top: 0
+    padding: 0
+    scrollbar-width: thin
+    scrollbar-color: $red $black
+    &::-webkit-scrollbar
+      width: 11px
+    &::-webkit-scrollbar-track
+      background-color: $black
+    &::-webkit-scrollbar-thumb
+      background-color: $red
+    @include bp($media-big-limit)
+      flex-flow: row
+      overflow: visible
   .navbar-item
     display: block
     text-align: center
@@ -89,6 +106,10 @@
       margin-top: 0.5em
       @include bp($media-big-limit)
         margin-top: 0
+    &:last-child
+      margin-bottom: 0.5em
+      @include bp($media-big-limit)
+        margin-bottom: 0
   @include bp($media-big-limit)
     width: unset
     height: unset
@@ -122,6 +143,25 @@
       transition: color oad(s) 100ms, text-shadow oad(s)
       @media (prefers-reduced-motion: reduce)
         transition: none
+
+.navbar-link:before
+  position: absolute
+  content: ""
+  background-image: $navbar-bg-image
+  background-repeat: no-repeat
+  background-size: cover
+  opacity: 0
+  z-index: -1
+  transition: opacity oad(m), transform oad(m)
+  @media (prefers-reduced-motion: reduce)
+    transition: none
+  @include bp($media-big-limit)
+    top: 18px
+    left: 10px
+    width: 150px
+    height: 15px
+    padding: 10px
+    margin-left: -10px
 
 .navbar-link:focus:before,
 .navbar-link:hover:before

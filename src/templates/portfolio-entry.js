@@ -1,13 +1,13 @@
 // @format
-import React from 'react';
-import PropTypes from 'prop-types';
-import {kebabCase} from 'lodash';
-import SEO from '../components/SEO';
-import {graphql, Link} from 'gatsby';
-import Layout from '../components/Layout';
+import React from "react";
+import PropTypes from "prop-types";
+import { kebabCase } from "lodash";
+import SEO from "../components/SEO";
+import { graphql, Link } from "gatsby";
+import Layout from "../components/Layout";
 import PortfolioContent, {
-  PortfolioHTMLContent,
-} from '../components/PortfolioContent';
+  PortfolioHTMLContent
+} from "../components/PortfolioContent";
 
 export const PortfolioEntryTemplate = ({
   content,
@@ -16,7 +16,7 @@ export const PortfolioEntryTemplate = ({
   description,
   tags,
   title,
-  helmet,
+  helmet
 }) => {
   const EntryContent = contentComponent || PortfolioContent;
 
@@ -31,19 +31,21 @@ export const PortfolioEntryTemplate = ({
               : coverImage
           })`,
           backgroundPosition: `center`,
-          backgroundAttachment: `fixed`,
-        }}>
+          backgroundAttachment: `fixed`
+        }}
+      >
         <h1 className="portfolio-title">{title}</h1>
         <div className="portfolio-description-background">
           <p className="container">{description}</p>
         </div>
       </header>
-      {helmet || ''}
+      {helmet || ""}
       <EntryContent className="container" content={content} />
       {tags && tags.length ? (
         <div
           className="container"
-          style={{marginTop: `4rem`, marginBottom: `8rem`}}>
+          style={{ marginTop: `4rem`, marginBottom: `8rem` }}
+        >
           <h4>Tags</h4>
           <ul className="tag-list">
             {tags.map(tag => (
@@ -64,11 +66,11 @@ PortfolioEntryTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   coverImage: PropTypes.object,
-  helmet: PropTypes.object,
+  helmet: PropTypes.object
 };
 
-const PortfolioEntry = ({data}) => {
-  const {markdownRemark: entry} = data;
+const PortfolioEntry = ({ location, data }) => {
+  const { markdownRemark: entry } = data;
   return (
     <Layout>
       <PortfolioEntryTemplate
@@ -82,7 +84,9 @@ const PortfolioEntry = ({data}) => {
             updatedTime={`${entry.frontmatter.updatedTime}`}
             image={`${entry.frontmatter.featuredimage.childImageSharp.fixed.src}`}
             imageAlt={entry.frontmatter.featuredimagealt}
-            description={`${entry.frontmatter.description}`} />
+            pathname={`${location.pathname}`}
+            description={`${entry.frontmatter.description}`}
+          />
         }
         tags={entry.frontmatter.tags}
         title={entry.frontmatter.title}
@@ -93,15 +97,15 @@ const PortfolioEntry = ({data}) => {
 
 PortfolioEntry.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
+    markdownRemark: PropTypes.object
+  })
 };
 
 export default PortfolioEntry;
 
 export const pageQuery = graphql`
   query PortfolioEntryByID($id: String!) {
-    markdownRemark(id: {eq: $id}) {
+    markdownRemark(id: { eq: $id }) {
       id
       html
       frontmatter {

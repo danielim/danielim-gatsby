@@ -1,16 +1,16 @@
 // @format
-import React from 'react';
-import PropTypes from 'prop-types';
-import {graphql} from 'gatsby';
-import instagram from '../img/social/instagram.svg';
-import linkedin from '../img/social/linkedin.svg';
-import twitter from '../img/social/twitter.svg';
-import codepen from '../img/social/codepen.svg';
-import github from '../img/social/github.svg';
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import instagram from "../img/social/instagram.svg";
+import linkedin from "../img/social/linkedin.svg";
+import twitter from "../img/social/twitter.svg";
+import codepen from "../img/social/codepen.svg";
+import github from "../img/social/github.svg";
 
-import Layout from '../components/Layout';
+import Layout from "../components/Layout";
 
-export const IndexPageTemplate = ({title, heading, social}) => (
+export const IndexPageTemplate = ({ title, heading, social }) => (
   <main className="index-center">
     <h1 className="index-title">{title}</h1>
     <h2 className="index-heading">{heading}</h2>
@@ -21,7 +21,8 @@ export const IndexPageTemplate = ({title, heading, social}) => (
             title="@imdanielch"
             href={social.twitter}
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             <img src={twitter} alt="Twitter" className="social-icon" />
           </a>
         </li>
@@ -30,7 +31,8 @@ export const IndexPageTemplate = ({title, heading, social}) => (
             title="danielim"
             href={social.github}
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             <img src={github} alt="GitHub" className="social-icon" />
           </a>
         </li>
@@ -39,7 +41,8 @@ export const IndexPageTemplate = ({title, heading, social}) => (
             title="imdanielch"
             href={social.linkedin}
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             <img src={linkedin} alt="Linkedin" className="social-icon" />
           </a>
         </li>
@@ -48,7 +51,8 @@ export const IndexPageTemplate = ({title, heading, social}) => (
             title="danielim"
             href={social.codepen}
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             <img src={codepen} alt="CodePen" className="social-icon" />
           </a>
         </li>
@@ -57,7 +61,8 @@ export const IndexPageTemplate = ({title, heading, social}) => (
             title="@imdanielchen"
             href={social.instagram}
             rel="noopener noreferrer"
-            target="_blank">
+            target="_blank"
+          >
             <img src={instagram} alt="Instagram" className="social-icon" />
           </a>
         </li>
@@ -83,11 +88,11 @@ export const IndexPageTemplate = ({title, heading, social}) => (
 IndexPageTemplate.propTypes = {
   title: PropTypes.string,
   heading: PropTypes.string,
-  social: PropTypes.object,
+  social: PropTypes.object
 };
 
-const IndexPage = ({data}) => {
-  const {frontmatter} = data.markdownRemark;
+const IndexPage = ({ data }) => {
+  const { frontmatter } = data.markdownRemark;
 
   return (
     <Layout>
@@ -103,16 +108,16 @@ const IndexPage = ({data}) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
+      frontmatter: PropTypes.object
+    })
+  })
 };
 
 export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: {templateKey: {eq: "index-page"}}) {
+    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
         heading

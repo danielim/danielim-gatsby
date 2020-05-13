@@ -1,7 +1,15 @@
 [build]
   publish = "public"
+  command = "echo 'default context'"
+  functions = "lambda"
+[context.production]
+  publish = "public"
   command = "npm run build"
   functions = "lambda"
+[context.staging]
+  command = "npm run build"
 [build.environment]
   YARN_VERSION = "1.9.4"
   YARN_FLAGS = "--no-ignore-optional"
+[[plugins]]
+package = "netlify-plugin-gatsby-cache"

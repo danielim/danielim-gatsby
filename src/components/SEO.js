@@ -59,6 +59,7 @@ const SEO = ({ titleTemplate, title, description, image, imageAlt, pathname, art
             <meta name="theme-color" content="#f5f2ed" />
             <meta name="description" content={seo.description} />
             <meta name="image" content={seo.image} />
+            <link rel="canonical" href={seo.url} />
             {seo.url && <meta property="og:url" content={seo.url} />}
             <meta property="og:type" content={`${article ? "article": "website"}`} />
             {seo.title && <meta property="og:title" content={seo.title} />}
